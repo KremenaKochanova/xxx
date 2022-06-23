@@ -9,18 +9,18 @@ import java.util.Scanner;
             int month = scan.nextInt();
             System.out.print("Enter day: ");
             int day = scan.nextInt();
-            if (month < 1 || month > 12 || year < 1980)
+            if (month < 1 || month > 12 || year < 1900)
                 System.out.println("Wrong input!");
             else
                 printMonth(year, month, day);
         }
         static void printMonth(int year, int month, int day) {
-            printMonthTitle(year, month, day);
-            printMonthBody(year, month);
-            dayofweek(day, month, year);
+            printMonthTitle (year, month, day);
+            printMonthBody (year, month);
+            dayofweek (day, month, year);
         }
         static void printMonthTitle(int year, int month, int day) {
-            System.out.println("Izbarniqt den ot sedmicata e: " + dayofweek(day, month, year));
+            System.out.println("This is the selected day of the week: " + dayofweek(day, month, year));
             System.out.println("         " + getMonthName(month) + " " + year);
             System.out.println("–––––––––––––––––––––––––––––");
             System.out.println(" Sun Mon Tue Wed Thu Fri Sat");
@@ -29,41 +29,29 @@ import java.util.Scanner;
         static String getMonthName(int month) {
             String monthName = null;
             switch (month) {
-                case 1:
-                    monthName = "January";
+                case 1: monthName = "January";
                     break;
-                case 2:
-                    monthName = "February";
+                case 2: monthName = "February";
                     break;
-                case 3:
-                    monthName = "March";
+                case 3: monthName = "March";
                     break;
-                case 4:
-                    monthName = "April";
+                case 4: monthName = "April";
                     break;
-                case 5:
-                    monthName = "May";
+                case 5: monthName = "May";
                     break;
-                case 6:
-                    monthName = "June";
+                case 6: monthName = "June";
                     break;
-                case 7:
-                    monthName = "July";
+                case 7: monthName = "July";
                     break;
-                case 8:
-                    monthName = "August";
+                case 8: monthName = "August";
                     break;
-                case 9:
-                    monthName = "September";
+                case 9: monthName = "September";
                     break;
-                case 10:
-                    monthName = "October";
+                case 10: monthName = "October";
                     break;
-                case 11:
-                    monthName = "November";
+                case 11: monthName = "November";
                     break;
-                case 12:
-                    monthName = "December";
+                case 12: monthName = "December";
             }
             return monthName;
         }
@@ -85,7 +73,7 @@ import java.util.Scanner;
                     System.out.println();
             }
             System.out.println();
-            //System.out.print("The startDay is:    " + startDay);
+            System.out.print("The startDay is:    " + startDay);
         }
         static int getStartDay(int year, int month) {
             int startDay1800 = 2;
@@ -127,38 +115,174 @@ import java.util.Scanner;
             int searchDay = (year + year / 4 - year / 100 + year / 400 + t[month - 1] + day) % 7;
             String dayName;
             switch (searchDay) {
-                case 1:
-                    dayName = "mon";
+                case 1: dayName = "mon";
                     break;
-                case 2:
-                    dayName = "tue";
+                case 2: dayName = "tue";
                     break;
-                case 3:
-                    dayName = "wed";
+                case 3: dayName = "wed";
                     break;
-                case 4:
-                    dayName = "thu";
+                case 4: dayName = "thu";
                     break;
-                case 5:
-                    dayName = "fri";
+                case 5: dayName = "fri";
                     break;
-                case 6:
-                    dayName = "sat";
+                case 6: dayName = "sat";
                     break;
-                case 0:
-                    dayName = "sun";
+                case 0: dayName = "sun";
                     break;
                 default:
                     dayName = "Invalid day";
                     break;
             }
-            System.out.print("Izbraniqt den ot sedmicata e: " + dayName);
+            String ordinaldayName[] = {"Тhe first", "Тhe second", "Тhe third", "Тhe fourth", "Тhe fifth"};
+            String ordinaldayName1[] = {"Тhe first", "Тhe second", "Тhe third", "Тhe fourth", "Тhe fifth"};
+            //+++++++++++++++++++++++++++++++++++++++ WEDNESDAY ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            if (searchDay == 3  && day>0 && day<8)
+            {
+                System.out.println(ordinaldayName[0]+ " " + dayName + " of the month");
+            }
+            else if(searchDay == 3 && day>7 && day<15)
+            {
+                System.out.println(ordinaldayName[1] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 3 && day>14 && day<21)
+            {
+                System.out.println(ordinaldayName[2] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 3 && day>20 && day<28)
+            {
+                System.out.println(ordinaldayName[3] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 3 && day>27 && day<32)
+            {
+                System.out.println(ordinaldayName[4] + " " + dayName + " of the month");
+            }
+//+++++++++++++++++++++++++++++++++++++++ SATURDAY ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            if (searchDay == 6  && day>0 && day<8)
+            {
+                System.out.println(ordinaldayName[0]+ " " + dayName + " of the month");
+            }
+            else if(searchDay == 6 && day>7 && day<15)
+            {
+                System.out.println(ordinaldayName[1] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 6 && day>14 && day<21)
+            {
+                System.out.println(ordinaldayName[2] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 6 && day>20 && day<28)
+            {
+                System.out.println(ordinaldayName[3] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 6 && day>27 && day<32)
+            {
+                System.out.println(ordinaldayName[4] + " " + dayName + " of the month");
+            }
+//+++++++++++++++++++++++++++++++++++++++ SUNDAY ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            if (searchDay == 0  && day>0 && day<8)
+            {
+                System.out.println(ordinaldayName[0]+ " " + dayName + " of the month");
+            }
+            else if(searchDay == 0 && day>7 && day<15)
+            {
+                System.out.println(ordinaldayName[1] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 0 && day>14 && day<21)
+            {
+                System.out.println(ordinaldayName[2] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 0 && day>20 && day<28)
+            {
+                System.out.println(ordinaldayName[3] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 0 && day>27 && day<32)
+            {
+                System.out.println(ordinaldayName[4] + " " + dayName + " of the month");
+            }
+//+++++++++++++++++++++++++++++++++++++++ MONDAY ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            if (searchDay == 1  && day>0 && day<8)
+            {
+                System.out.println(ordinaldayName1[0]+ " " + dayName + " of the month");
+            }
+            else if(searchDay == 31 && day>7 && day<15)
+            {
+                System.out.println(ordinaldayName1[1] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 1 && day>14 && day<21)
+            {
+                System.out.println(ordinaldayName1[2] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 1 && day>20 && day<28)
+            {
+                System.out.println(ordinaldayName1[3] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 1 && day>27 && day<32)
+            {
+                System.out.println(ordinaldayName1[4] + " " + dayName + " of the month");
+            }
+//+++++++++++++++++++++++++++++++++++++++ TUESDAY ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            if (searchDay == 2  && day>0 && day<8)
+            {
+                System.out.println(ordinaldayName1[0]+ " " + dayName + " of the month");
+            }
+            else if(searchDay == 2 && day>7 && day<15)
+            {
+                System.out.println(ordinaldayName1[1] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 2 && day>14 && day<21)
+            {
+                System.out.println(ordinaldayName1[2] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 2 && day>20 && day<28)
+            {
+                System.out.println(ordinaldayName1[3] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 2 && day>27 && day<32)
+            {
+                System.out.println(ordinaldayName1[4] + " " + dayName + " of the month");
+            }
+//+++++++++++++++++++++++++++++++++++++++ THURSDAY ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            if (searchDay == 4  && day>0 && day<8)
+            {
+                System.out.println(ordinaldayName1[0]+ " " + dayName + " of the month");
+            }
+            else if(searchDay == 4 && day>7 && day<15)
+            {
+                System.out.println(ordinaldayName1[1] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 4 && day>14 && day<21)
+            {
+                System.out.println(ordinaldayName1[2] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 4 && day>20 && day<28)
+            {
+                System.out.println(ordinaldayName1[3] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 4 && day>27 && day<32)
+            {
+                System.out.println(ordinaldayName1[4] + " " + dayName + " of the month");
+            }
+//+++++++++++++++++++++++++++++++++++++++ FRIDAY ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            if (searchDay == 5  && day>0 && day<8)
+            {
+                System.out.println(ordinaldayName1[0]+ " " + dayName + " of the month");
+            }
+            else if(searchDay == 5 && day>7 && day<15)
+            {
+                System.out.println(ordinaldayName1[1] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 5 && day>14 && day<21)
+            {
+                System.out.println(ordinaldayName1[2] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 5 && day>20 && day<28)
+            {
+                System.out.println(ordinaldayName1[3] + " " + dayName + " of the month");
+            }
+            else if(searchDay == 5 && day>27 && day<32)
+            {
+                System.out.println(ordinaldayName1[4] + " " + dayName + " of the month");
+            }
+            System.out.println("This is the selected day of the week: " + dayName);
             return searchDay;
-        }
-    }
-
-
-
-
-
-
+        } //END  of function
+}
